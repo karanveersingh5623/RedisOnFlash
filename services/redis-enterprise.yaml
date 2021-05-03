@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-enterprise
+  labels:
+    app: redis-enterprise
+spec:
+  clusterIP: None
+  ports:
+    - name: discovery
+      port: 8001
+      targetPort: 8001
+      protocol: TCP
+    - name: ui
+      port: 8443
+      targetPort: 8443
+      protocol: TCP
+    - name: redis
+      port: 26379
+      targetPort: 26379
+      protocol: TCP
+  selector:
+    app: redis-enterprise
